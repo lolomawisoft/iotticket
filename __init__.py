@@ -1,2 +1,2 @@
-from iotticket.models import *
-from iotticket.client import *
+from models import *
+from client import *
