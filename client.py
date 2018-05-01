@@ -26,6 +26,8 @@ import json #import json
 import datetime
 import time
 import ssl
+import sys
+sys.path.insert(1, '/Home/pi/Project3/iotticket')
 from pprint import pprint
 from models import *
 from parsejson import parsejson
