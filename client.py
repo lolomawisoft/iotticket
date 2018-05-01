@@ -27,12 +27,12 @@ import datetime
 import time
 import ssl
 from pprint import pprint
-from iotticket.models import *
-from iotticket.parsejson import parsejson
-from iotticket.models import errorinfo
-from iotticket.models import criteria
-from iotticket.exception import ValidAPIParamException
-from iotticket.validation import validate
+from models import *
+from parsejson import parsejson
+from models import errorinfo
+from models import criteria
+from exception import ValidAPIParamException
+from validation import validate
 #main class
 class Client(object):
 	""" The main client class from which user can call and use the provided functions."""
@@ -99,12 +99,12 @@ class Client(object):
 		""" Return error object"""
 		info = errorinfo()
 		info.set_httpstatus(statuscode)
-		return self.get_response(jsonres, "iotticket.models.errorinfo")
+		return self.get_response(jsonres, "models.errorinfo")
 	#get device function	
 	def getdevice(self, deviceId):	
 		"""Function to get information of a device"""
 		pathUrl = self.baseUrl + self.specificdeviceresourceformat.format(deviceId)
-		return self.connect(pathUrl, "iotticket.models.device")
+		return self.connect(pathUrl, "models.device")
 	#get devices function		
 	def getdevices(self, limit = 10, offset = 0):
 		"""Function to get list of devices."""
@@ -112,7 +112,7 @@ class Client(object):
 			limit = 100
 		param = "?limit=" + str(limit) + "&offset=" + str(offset)
 		pathUrl = self.baseUrl + self.deviceresource + param
-		return self.connect(pathUrl, "iotticket.models.devices")
+		return self.connect(pathUrl, "models.devices")
 	#get datanode list function		
 	def getdatanodeslist(self, deviceId, limit = 10, offset = 0):
 		"""Function to get datanode list"""
@@ -120,17 +120,17 @@ class Client(object):
 			limit = 100
 		param = "?limit=" + str(limit) + "&offset=" + str(offset)
 		pathUrl = self.baseUrl + self.datanodesresourceformat.format(deviceId) + param	
-		return self.connect(pathUrl, "iotticket.models.datanodes")	
+		return self.connect(pathUrl, "models.datanodes")	
 	#get all quota function		
 	def getallquota(self):
 		"""Function to get all quota."""
 		pathUrl = self.baseUrl + self.quotaallresource
-		return self.connect(pathUrl, "iotticket.models.quota")	
+		return self.connect(pathUrl, "models.quota")	
 	#get device quota function		
 	def getdevicequota(self, deviceId):
 		"""Function to get quota of a device."""
 		pathUrl = self.baseUrl + self.quotadeviceresourceformat.format(deviceId)
-		return self.connect(pathUrl, "iotticket.models.devicequota")	
+		return self.connect(pathUrl, "models.devicequota")	
 	#register device function		
 	def registerdevice(self, deviceobj):
 		"""Register new device."""
@@ -147,7 +147,7 @@ class Client(object):
 			except err.HTTPError as e:	
 				raise self.get_errorinfo(e.code, e.read()) from None			
 			else:
-				return self.get_response(response, "iotticket.models.device")
+				return self.get_response(response, "models.device")
 		else:
 			return "Device is not valid."
 	#read data function
@@ -182,7 +182,7 @@ class Client(object):
 			pr += "&order=" + order
 		param = "?datanodes=" + critlist + pr		
 		pathUrl = self.baseUrl + self.readdataresourceformat.format(deviceId) + param
-		return self.connect(pathUrl, "iotticket.models.datanodesvaluelist")	
+		return self.connect(pathUrl, "models.datanodesvaluelist")	
 	#write data node function
 	def writedata(self, deviceId, *datanodevalueobj):
 		"""Function to write data to server."""
@@ -202,6 +202,6 @@ class Client(object):
 			except err.HTTPError as e:
 					raise self.get_errorinfo(e.code, e.read()) from None			
 			else:
-				return self.get_response(response, "iotticket.models.writeresults")
+				return self.get_response(response, "models.writeresults")
 		else:
 			return "All datanodes are not valid"
