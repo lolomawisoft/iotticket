@@ -1,11 +1,11 @@
 import json
 import sys
-sys.path.insert(0, '/Home/pi/iotticket')
-from iotticket.models import device
-from iotticket.models import criteria
-from iotticket.models import deviceattribute
-from iotticket.models import datanodesvalue
-from iotticket.client import Client
+sys.path.insert(1, '/Home/pi/iotticket')
+from models import device
+from models import criteria
+from models import deviceattribute
+from models import datanodesvalue
+from client import Client
 
 data = json.load(open(sys.argv[1]))
 username = data["student2"]
