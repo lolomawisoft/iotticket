@@ -23,6 +23,8 @@ import urllib.request #import request
 import json #import json
 import time #import time to get the current timestamp
 import urllib.error as err
+import sys
+sys.path.insert(1, '/Home/pi/Project3/iotticket')
 from stringbuilder import StringBuilder
 from validation import validate
 
