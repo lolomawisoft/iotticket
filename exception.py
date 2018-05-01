@@ -18,7 +18,9 @@
  # OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  # DEALINGS IN THE SOFTWARE.
  
-from . models import errorinfo
+import sys
+sys.path.insert(1, '/Home/pi/Project3/iotticket')
+from models import errorinfo
 class ValidAPIParamException(Exception):
 	__serialVersionUID = 3542063386068095441
 	def __init__(self, message):
