@@ -9,7 +9,7 @@ from client import Client
 
 data = json.load(open(sys.argv[1]))
 username = data["student2"]
-password = data["student2_password"]
+password = data["student2_Password"]
 baseurl = data["https://my.iot-ticket.com/api/v1/"]
 
 #create client object
