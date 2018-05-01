@@ -7,7 +7,7 @@ from models import deviceattribute
 from models import datanodesvalue
 from client import Client
 
-data = json.load(open(sys.argv[1]))
+data = json.load(open(sys.argv))
 username = data["student2"]
 password = data["student2_Password"]
 baseurl = data["https://my.iot-ticket.com/api/v1/"]
