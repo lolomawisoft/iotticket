@@ -1,6 +1,6 @@
 import json
 import sys
-sys.path.insert(0, '/Home/pi/project3/iotticket')
+sys.path.insert(0, '/Home/pi/iotticket')
 from iotticket.models import device
 from iotticket.models import criteria
 from iotticket.models import deviceattribute
